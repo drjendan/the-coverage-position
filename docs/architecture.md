@@ -12,6 +12,8 @@ The pilot schema covers organizations, matters, and activity only. Documents, pa
 
 ## M2 and later
 
+Design for nationwide customers. Separate the matter's coverage/letter jurisdiction from the insurer's domicile/licensed states, contract requirements, and relevant data jurisdictions. Maintain versioned state-specific letter notices and a reviewed security applicability matrix. A New York development fixture does not make New York rules universal or limit the product to that state.
+
 Introduce real authentication and server-side matter permissions before accepting actual claims. Resolve production database/hosting and private storage during M2; SQLite is the M1 local store, not a committed multi-tenant production database. Document processing runs in an asynchronous worker with redaction-aware rendering/OCR. Provider integrations are accessed only on the server and must not silently fall back to an unapproved service.
 
 Validate whether the company's approved Copilot configuration exposes the necessary supported integration before committing to a connection design. Existing subscription access alone is not treated as integration authorization. An unavailable provider must leave the workflow in an explicit blocked/manual state.

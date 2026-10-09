@@ -4,7 +4,7 @@ An insurance claims workspace for reviewing commercial general liability Coverag
 
 ## Current build
 
-**M0 foundation / M1 claims workspace.** Working features:
+**M0 foundation / M1 claims workspace, with a read-only Netlify preview.** Working features:
 
 - Dashboard and searchable matter list with status filters.
 - Create, reopen, and edit matters; save-and-resume using server-side SQLite storage.
@@ -13,7 +13,7 @@ An insurance claims workspace for reviewing commercial general liability Coverag
 - Duplicate claim validation and version checks to prevent silent concurrent overwrites.
 - Desktop and mobile layouts, keyboard-accessible forms, and clear failure states.
 
-Document upload, authentication, OCR, AI analysis, approval, and letter export are **not implemented**. Their screens identify the planned milestone. This build is localhost-only and must contain synthetic information. It is not suitable for production or real claim data. No uploaded source documents are included in this repository.
+Document upload, authentication, OCR, AI analysis, approval, and letter export are **not implemented**. Their screens identify the planned milestone. The writable development build is localhost-only and must contain synthetic information. The Netlify preview serves fixed synthetic fixtures and rejects all writes. It is not suitable for production or real claim data. No uploaded source documents are included in this repository.
 
 ## Run locally
 
@@ -60,3 +60,11 @@ docs/            Build roadmap and architecture decisions
 ## Next milestone
 
 M2 adds authentication, organization/matter authorization, private PDF intake, immutable document versions, and page viewing. The approved AI-provider integration, acceptance/denial templates, and pilot settings must be resolved before live AI processing and final exports. See [the roadmap](docs/build-roadmap.md).
+
+## Netlify preview and insurance security
+
+Import this repository into Netlify on branch `main`. The committed `netlify.toml` sets build command `npm run check && npm test`, publish directory `public`, and functions directory `netlify/functions`. No secrets or cloud database are required for the current read-only preview. Do not use `npm start` as the Netlify build command.
+
+Hosted matter creation, editing, and uploads are disabled on both the UI and API. Local development remains writable for synthetic matters. See [deployment instructions](docs/netlify-preview.md). Actual Netlify deployment and browser verification remain outstanding.
+
+The application is **not certified or production compliant**. See [the insurance security plan](docs/security-plan.md) for the NAIC/NYDFS applicability review, proposed controls, verification evidence, and release gates. Real claims require authenticated access, isolated managed data storage, private files, validated AI/OCR handling, and customer security review.

@@ -2,6 +2,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { randomUUID } from 'node:crypto';
+import { DEMO_INPUTS } from './demo-fixtures.js';
 
 export const ORG = 'local-development';
 export const STATUSES = ['New', 'Needs Information', 'Archived'];
@@ -66,12 +67,7 @@ export function openStore(filename) {
     events(id) { this.get(id); return db.prepare('SELECT action,actor,version,created_at FROM audit_events WHERE matter_id=? AND organization_id=? ORDER BY created_at DESC,rowid DESC').all(id, ORG); },
     seed() {
       if (this.list().length) throw new AppError(409, 'Demo matters can only be added to an empty workspace.');
-      const fixtures = [
-        { claim_number:'DEMO-1001', title:'Premises incident review', insured:'Harbor Sample Hospitality LLC', claimant:'Jordan Sample', jurisdiction:'New York', analyst:'Demo Analyst', reviewer:'Demo Reviewer', incident_date:'2026-09-12', notes:'Synthetic demonstration only. No uploaded claim documents.', status:'New' },
-        { claim_number:'DEMO-1002', title:'Property damage inquiry', insured:'Example Residences LLC', claimant:'Alex Example', jurisdiction:'New Jersey', analyst:'Demo Analyst', status:'Needs Information', notes:'Synthetic demonstration only. Awaiting incident information.' },
-        { claim_number:'DEMO-1003', title:'Closed training matter', insured:'Sample Retail Group LLC', claimant:'Taylor Demo', jurisdiction:'Pennsylvania', status:'Archived', notes:'Synthetic demonstration only. Archived for training.' }
-      ];
-      return fixtures.map(f=>create(f,true));
+      return DEMO_INPUTS.map(f=>create(f,true));
     },
     close() { db.close(); }
   };

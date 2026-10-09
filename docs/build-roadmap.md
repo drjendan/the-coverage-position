@@ -2,7 +2,7 @@
 
 October 9, 2026 | Initial release plan
 
-The first release will help an adjuster review commercial general liability Coverage A claim documents and produce an editable acceptance, reservation-of-rights, or denial letter. Start with the supplied New York matter and expand after the workflow is accurate and useful. The adjuster selects the coverage position; AI supports extraction, review, and drafting.
+The product is intended for nationwide use. The first release will help an adjuster review commercial general liability Coverage A claim documents and produce an editable acceptance, reservation-of-rights, or denial letter. Start testing with the supplied New York matter and expand validated state/customer configurations after the workflow is accurate and useful. New York is the first fixture, not a geographic product restriction. The adjuster selects the coverage position; AI supports extraction, review, and drafting.
 
 Build each milestone as a working increment with a demonstration and acceptance check. The build specifications are complete as a starting point; the M1 local claims workspace has been implemented. Hosting, AI integration, templates, and production settings remain implementation decisions.
 
@@ -54,6 +54,8 @@ The company's own Copilot was discussed in the meeting as an integration idea. V
 **Done when:** The core workflow works after reload and does not lose saved matter data. Any demo identity or local persistence is clearly labeled and restricted to synthetic content. M1 is a usable application foundation, not a production claims system.
 
 ## M2 Secure documents and access
+
+Implement the controls and evidence requirements in `security-plan.md` alongside this milestone. Netlify initially hosts a read-only synthetic preview; the writable production API requires an approved persistent database, authentication, and private storage.
 
 **Deliverables**
 
@@ -111,6 +113,7 @@ Initial source support is PDF. Add attorney letters and incident reports supplie
 - Automatically populated recipient/subject details, allegation summary, carrier, policy period, limits, and selected provisions.
 - The policy-controls paragraph included in all approved letter types.
 - Maintained jurisdiction-specific notices with approval, owner, and effective version.
+- Nationwide configuration model separating matter/letter jurisdiction from customer regulatory applicability; unapproved state-specific notices remain blocked for final export.
 - Source-linked policy quotation blocks, verified against visible source content.
 - Section-based letter editor, autosave, version history, and regeneration of selected sections without losing other edits.
 - Internal evidence panel kept separate from recipient-facing prose.
@@ -144,6 +147,7 @@ Initial source support is PDF. Add attorney letters and incident reports supplie
 - Permission/isolation checks, prompt-injection checks, failed-job recovery, concurrent-edit handling, and backup restore verification.
 - Measured turnaround, OCR quality, reviewer corrections, export fidelity, and processing cost per matter.
 - Hosting configuration, monitoring, support notes, and retention/deletion behavior for originals and derived content.
+- State-by-state security and letter-template applicability matrix with source/effective-date ownership and customer review, starting with pilot states and expanding toward nationwide coverage.
 - Pilot operating instructions and known limitations.
 
 **Done when:** Agreed acceptance cases pass, no critical data exposure or invented policy wording remains, templates and provider configuration are approved for the pilot, and reviewers can complete the full workflow. Publication and live customer rollout are separate actions; a completed build alone does not mean they occurred.

@@ -31,7 +31,7 @@ export function createApp({ filename = resolve(process.env.DATA_DIR || './data',
         const [name,type]=assets[path];const file=await readFile(new URL(`../public/${name}`,import.meta.url));
         res.writeHead(200,{...headers,'Content-Type':`${type}; charset=utf-8`});res.end(file);return;
       }
-      if(path==='/api/health' && req.method==='GET') return json(200,{status:'ok',mode:'local-development',milestone:'M1',authentication:false});
+      if(path==='/api/health' && req.method==='GET') return json(200,{status:'ok',mode:'local-development',milestone:'M1',authentication:false,readOnly:false});
       if(path==='/api/matters' && req.method==='GET') return json(200,{matters:store.list()});
       if(path==='/api/matters' && req.method==='POST') return json(201,{matter:store.create(await body(req))});
       if(path==='/api/demo' && req.method==='POST') { await body(req); return json(201,{matters:store.seed()}); }
