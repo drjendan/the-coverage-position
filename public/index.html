@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142d36">
+  <title>The Coverage Position</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to workspace</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="The Coverage Position home"><span class="brand-icon">CP</span><span>The Coverage<br><strong>Position</strong></span></a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav aria-label="Main navigation">
+        <a href="#dashboard" data-nav="dashboard"><span class="nav-icon">◫</span>Dashboard</a>
+        <a href="#matters" data-nav="matters"><span class="nav-icon">▤</span>Matters<span id="matter-count" class="nav-count">0</span></a>
+        <a href="#review" data-nav="review"><span class="nav-icon">✓</span>Review queue<span class="soon">M6</span></a>
+        <a href="#templates" data-nav="templates"><span class="nav-icon">▧</span>Letter templates<span class="soon">M5</span></a>
+        <a href="#settings" data-nav="settings"><span class="nav-icon">⚙</span>Settings</a>
+      </nav>
+      <div class="sidebar-bottom"><span class="pulse"></span>Development workspace<p>Coverage A · First milestone</p><div class="profile"><span class="avatar">LD</span><div>Local developer<small>Authentication planned for M2</small></div></div></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><span>Claims workspace <span class="divider">/</span> <span id="breadcrumb">Dashboard</span></span><span class="environment">LOCAL DEVELOPMENT</span></header>
+      <div class="demo-notice"><span>◈</span><div><strong>Build in progress.</strong> Use synthetic matters only. Authentication, uploads, AI processing, and letter generation are not enabled.</div></div>
+      <main id="main" tabindex="-1"></main>
+      <footer>The Coverage Position <span>Human review at every coverage decision.</span></footer>
+    </div>
+  </div>
+  <dialog id="matter-dialog" aria-labelledby="dialog-title">
+    <form id="matter-form">
+      <div class="dialog-header"><div><p class="eyebrow">MATTER DETAILS</p><h2 id="dialog-title">Create a matter</h2></div><button type="button" class="icon-button" id="close-dialog" aria-label="Close form">×</button></div>
+      <p class="form-hint">Start with the information you know. Required fields are marked *.</p>
+      <div class="form-grid">
+        <label>Claim number *<input name="claim_number" required maxlength="80" placeholder="e.g. TRAINING-1004" autocomplete="off"></label>
+        <label>Jurisdiction *<select name="jurisdiction" required><option value="">Select jurisdiction</option></select></label>
+        <label class="full">Matter title *<input name="title" required maxlength="180" placeholder="e.g. Premises incident review"></label>
+        <label>Insured *<input name="insured" required maxlength="180" placeholder="Legal entity name"></label>
+        <label>Claimant<input name="claimant" maxlength="180" placeholder="Name, if known"></label>
+        <label>Assigned analyst<input name="analyst" maxlength="120" placeholder="Name"></label>
+        <label>Reviewer<input name="reviewer" maxlength="120" placeholder="Name, if assigned"></label>
+        <label>Incident date<input name="incident_date" type="date"></label>
+        <label>Status<select name="status"><option>New</option><option>Needs Information</option><option>Archived</option></select></label>
+        <label class="full">Letter recipient<input name="recipient" maxlength="180" placeholder="Recipient, if known"></label>
+        <label class="full">Working notes<textarea name="notes" maxlength="5000" rows="3" placeholder="Record context and missing information. Use synthetic information only."></textarea></label>
+      </div>
+      <p id="form-error" class="error" role="alert" hidden></p>
+      <div class="dialog-footer"><button type="button" class="button secondary" id="cancel-dialog">Cancel</button><button type="submit" class="button" id="save-matter">Create matter</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

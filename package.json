@@ -1,0 +1,14 @@
+{
+  "name": "the-coverage-position",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local development claims workspace for The Coverage Position",
+  "engines": { "node": ">=24.0.0 <25" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "dev": "node --watch --env-file-if-exists=.env src/server.js",
+    "test": "node --test",
+    "check": "node --check src/server.js && node --check src/store.js && node --check public/app.js"
+  }
+}
