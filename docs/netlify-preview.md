@@ -9,7 +9,7 @@ Import `drjendan/the-coverage-position` in Netlify and select branch `main`.
 | Setting | Value |
 | --- | --- |
 | Base directory | Repository root; leave blank |
-| Build command | `npm run check && npm test` |
+| Build command | `npm run build` |
 | Publish directory | `public` |
 | Functions directory | `netlify/functions` |
 | Build Node version | 24, configured in `netlify.toml` |
@@ -30,3 +30,7 @@ Do not use `npm start` as the Netlify build command. It runs the localhost devel
 No deployment was performed as part of adding this configuration. The live URL, routing, headers, and Netlify bundling must be verified after the user deploys.
 
 See [the security plan](security-plan.md) for production requirements. Do not enter real claim information into the local build or extend the hosted fixture endpoint to accept it.
+
+## Optional hosted access build
+
+M2A adds a separate `APP_MODE=secure` backend. Keep `APP_MODE=preview` while configuring the cloud project. Follow [M2A setup](milestone-2a.md) for migrations, users, environment scopes, and required checks. This does not enable scanning, viewing, or production claim processing.

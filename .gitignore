@@ -10,3 +10,5 @@ uploads/
 coverage/
 test-results/
 playwright-report/
+
+public/_headers

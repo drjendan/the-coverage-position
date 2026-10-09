@@ -23,3 +23,7 @@ Approved letters will reference exact source, fact-review, issue-selection, and 
 ## Public repository boundary
 
 Only source code, synthetic fixtures, and product documentation belong in Git. Do not commit original claim documents, personal information, database files, secrets, or provider credentials. Branding beyond The Coverage Position remains pending business agreement.
+
+## M2A hosted implementation
+
+The optional secure Netlify mode uses Supabase Auth, PostgreSQL RLS, and private Storage. The function uses the user session with a publishable project key; no service-role key is required. SQLite remains an independent synthetic localhost development path. See `milestone-2a.md` for permissions, deployment, and outstanding validation. Private uploads remain pending scan, with no viewing or AI processing. This introduces an external SDK dependency and a lockfile; install with `npm ci`.

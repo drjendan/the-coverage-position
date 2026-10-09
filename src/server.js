@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { openStore, AppError } from './store.js';
 
-const assets = { '/': ['index.html','text/html'], '/app.js': ['app.js','text/javascript'], '/styles.css': ['styles.css','text/css'] };
+const assets = { '/': ['index.html','text/html'], '/app.js': ['app.js','text/javascript'], '/secure-ui.js': ['secure-ui.js','text/javascript'], '/styles.css': ['styles.css','text/css'] };
 const headers = {
   'X-Content-Type-Options':'nosniff',
   'Referrer-Policy':'no-referrer',

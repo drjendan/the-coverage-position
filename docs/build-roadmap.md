@@ -12,7 +12,7 @@ Build each milestone as a working increment with a demonstration and acceptance 
 | --- | --- | --- | --- |
 | M0 Project setup | Architecture decisions, source control, fixtures, and backlog | Existing specifications | Initial local foundation complete; production/provider decisions pending |
 | M1 Claims workspace | Usable dashboard and matter workflow | M0 | Implemented locally; see milestone report |
-| M2 Secure documents | Authenticated access, private uploads, and page viewing | M1 | Planned |
+| M2 Secure documents | Authenticated access, private uploads, and page viewing | M1 | M2A auth/quarantine implemented; cloud verification and M2B scanning/viewer pending |
 | M3 Verified facts | Redaction-aware extraction and source-linked fact review | M2 and approved processing services | Planned |
 | M4 Coverage review | Policy inventory, endorsements, and adjuster checklist | M3 | Planned |
 | M5 Letter drafting | Editable letters in the supplied Word structure | M4 and approved AI integration | Planned |

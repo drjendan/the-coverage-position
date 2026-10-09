@@ -1,4 +1,5 @@
 import { previewMatters } from '../../src/demo-fixtures.js';
+import { createSecureApi } from '../lib/secure-api.mjs';
 
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
@@ -12,6 +13,10 @@ const json = (status,body)=>new Response(JSON.stringify(body),{status,headers});
 // Public READ-ONLY preview. No database, uploads, credentials, or AI requests.
 // Do not extend this handler to accept live claims. M2 requires authenticated access.
 export default async function handler(request) {
+  if(process.env.APP_MODE==='secure') {
+    try { return await createSecureApi()(request); } catch { return json(503,{error:'Secure backend is not configured.'}); }
+  }
+  if(process.env.APP_MODE && process.env.APP_MODE!=='preview')return json(503,{error:'Invalid application mode.'});
   if(request.method!=='GET') return json(403,{error:'This hosted preview is read-only. Matter creation, editing, and uploads are disabled.'});
   const path=new URL(request.url).pathname;
   if(path==='/api/health') return json(200,{status:'ok',mode:'synthetic-preview',milestone:'M1',authentication:false,readOnly:true});

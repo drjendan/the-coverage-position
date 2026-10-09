@@ -1,5 +1,5 @@
 [build]
-  command = "npm run check && npm test"
+  command = "npm run build"
   publish = "public"
   functions = "netlify/functions"
 
@@ -12,7 +12,6 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer"
     X-Frame-Options = "DENY"
